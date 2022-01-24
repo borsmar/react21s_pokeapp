@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "react-bootstrap/Navbar";
+import Header from "./components/Header";
+
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
-import Spinner from "react-bootstrap/Spinner";
 
 import axios from "axios";
+import PokeCard from "./components/PokeCard";
+import Loader from "./components/Loader";
 
 const App = () => {
   const [pokemons, setPokemons] = useState();
@@ -21,16 +23,13 @@ const App = () => {
         setPokemons(data);
         setIsLoading(false);
       });
+      console.log(pokemons);
     });
   }, []);
 
   return (
     <div>
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#">PokeApp</Navbar.Brand>
-        </Container>
-      </Navbar>
+      <Header />
       <Container>
         <Row
           xs={2}
@@ -38,23 +37,14 @@ const App = () => {
           lg={5}
           className="justify-content-between my-5 d-flex gap-3"
         >
-          {isLoading && (
-            <Spinner animation="border" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </Spinner>
-          )}
+          {isLoading && <Loader />}
           {!isLoading &&
             pokemons.map((pokemon) => (
-              <Card bg="dark" text="light" key={pokemon.name}>
-                <Card.Header>{pokemon.name}</Card.Header>
-
-                <Card.Body>
-                  <Card.Img
-                    variant="top"
-                    src={pokemon.sprites.other.dream_world.front_default}
-                  />
-                </Card.Body>
-              </Card>
+              <PokeCard
+                key={pokemon.name}
+                name={pokemon.name}
+                image={pokemon.sprites.other.dream_world.front_default}
+              />
             ))}
         </Row>
       </Container>
