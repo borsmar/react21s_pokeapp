@@ -5,6 +5,8 @@ import PokeList from "./components/PokeList";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 
+import "./App.css";
+
 const App = () => {
   return (
     <BrowserRouter>
