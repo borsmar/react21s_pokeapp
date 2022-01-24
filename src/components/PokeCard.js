@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 
-const Pokecard = ({ name, image }) => {
+const PokeCard = ({ name, image }) => {
   return (
     <Card bg="dark" text="light" key={name}>
       <Card.Header>{name}</Card.Header>
@@ -12,4 +12,4 @@ const Pokecard = ({ name, image }) => {
   );
 };
 
-export default Pokecard;
+export default PokeCard;
