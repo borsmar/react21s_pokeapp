@@ -12,7 +12,7 @@ const PokeList = () => {
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [nextPokemons, setNextPokemons] = useState(
-    "https://pokeapi.co/api/v2/pokemon/"
+    "https://pokeapi.co/api/v2/pokemon?limit=50&offset=0"
   );
 
   useEffect(() => {
@@ -36,6 +36,8 @@ const PokeList = () => {
           setPokemons((prevState) => [...prevState, ...data]);
         });
         setIsLoading(false);
+        console.log(pokemons);
+        console.log(nextPokemons);
       });
   };
 
