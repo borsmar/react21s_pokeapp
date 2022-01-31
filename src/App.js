@@ -6,8 +6,8 @@ import Layout from "./Layout";
 import Home from "./Home";
 import './App.css'
 
-const App = () => {
 
+const App = () => {
   return (
     <BrowserRouter>
       <Routes>
